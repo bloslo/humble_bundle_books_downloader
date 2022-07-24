@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+  </head>
+  <body>
+    <div class="extension-name">
+      <h2>HumbleBundle Books Downloader</h2>
+    </div>
+
+    <div class="info">
+    </div>
+
+    <div class="download-panel">
+      <ul class="file-formats">
+        <li class="file-format">
+          <input type="checkbox" id="pdf" name="pdf" checked>
+          <label for="pdf">PDF</label>
+        </li>
+  
+        <li class="file-format">
+          <input type="checkbox" id="epub" name="epub">
+          <label for="epub">EPUB</label>
+        </li>
+  
+        <li class="file-format">
+          <input type="checkbox" id="mobi" name="mobi">
+          <label for="mobi">MOBI</label>
+        </li>
+      </ul>
+  
+      <div class="download-button">Download</div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="jszip.min.js"></script>
+    <script src="FileSaver.min.js"></script>
+  </body>
+</html>

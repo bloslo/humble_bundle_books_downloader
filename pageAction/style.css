@@ -1,0 +1,44 @@
+body {
+  width: 250px;
+  font-family: 'Fira Sans';
+}
+
+.extension-name {
+  color: #bf282e;
+  width: 100%;
+  text-align: center;
+}
+
+.file-formats {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  
+}
+
+.file-format {
+  display: block;
+  width: 50%;
+}
+
+.download-button {
+  width: 50%;
+  background-color: #0060df;
+  color: #ffffff;
+  border-radius: 2px;
+  padding: 4px;
+  font-size: 0.8em;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+  margin: 10px auto 0;
+}
+
+.download-button:hover {
+  background-color: #003eaa;
+}
+
+.download-button:active {
+  background-color: #002275;
+}

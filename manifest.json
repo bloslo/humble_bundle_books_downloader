@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "humble_bundle_books_downloader",
+  "description": "An extension to download book bundles from HumbleBundle.",
+  "version": "0.0.1",
+  "icons": {
+    "64": "icons/icon.png"
+  },
+  "page_action": {
+    "default_icon": {
+      "64": "icons/icon.png"
+    },
+    "default_popup": "pageAction/index.html",
+    "default_title": "humble_bundle_books_downloader",
+    "show_matches": ["https://www.humblebundle.com/*"]
+  },
+  "permissions": ["https://www.humblebundle.com/*", "https://dl.humble.com/*", "webRequest", "downloads"]
+}
