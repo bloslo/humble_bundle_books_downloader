@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "humble_bundle_books_downloader",
   "description": "An extension to download book bundles from HumbleBundle.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "icons": {
     "64": "icons/icon.png"
   },
