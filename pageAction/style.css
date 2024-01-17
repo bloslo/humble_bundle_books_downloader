@@ -42,3 +42,13 @@ body {
 .download-button:active {
   background-color: #002275;
 }
+
+.info {
+  display: none;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#download-progress {
+  width: 100%;
+}

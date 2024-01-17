@@ -17,23 +17,37 @@ function listenForSelectedFileFormats() {
   });
 }
 
+function updateProgress(downloadedFiles, total) {
+  const progressLabel = document.querySelector('label[for="download-progress"]');
+  progressLabel.textContent = `Downloading files (${downloadedFiles}/${total})`;
+
+  const progressVal = downloadedFiles / total * 100;
+  const progressElement = document.getElementById("download-progress");
+  progressElement.value = progressVal;
+}
+
 function onExecuted(result) {
   console.log("Content script executed");
 
   listenForSelectedFileFormats();
 
-  document.addEventListener("click", async (e) => {
-    function zipFiles(downloadUrls) {
+  document.addEventListener("click", (e) => {
+    async function zipFiles(downloadUrls) {
       const jsZip = new JSZip();
 
-      downloadUrls.forEach((url) => {
+      let counter = 0;
+      for (const url of downloadUrls) {
         const filename = new URL(url).pathname.split("/").pop();
         const format = filename.split(".");
 
-        const promise = fetch(url)
+        const blob = await fetch(url)
           .then(r => r.blob());
-        jsZip.file("books" + "/" + format[1] + "/" + filename, promise);
-      });
+
+        jsZip.file("books" + "/" + format[1] + "/" + filename, blob);
+        counter++;
+
+        updateProgress(counter, downloadUrls.length);
+      }
 
       return jsZip.generateAsync({type: "blob"});
     }
@@ -47,7 +61,7 @@ function onExecuted(result) {
       }
 
       const epubCheckbox = document.getElementById("epub");
-      if (epubCheckbox) {
+      if (epubCheckbox.checked) {
         downloadUrls = [...downloadUrls, ...epubUrls];
       }
 
@@ -56,10 +70,17 @@ function onExecuted(result) {
         downloadUrls = [...downloadUrls, ...mobiUrls];
       }
 
-      zipFiles(downloadUrls)
-        .then(content => {
-          saveAs(content, "books.zip");
-        });
+      if (Array.isArray(downloadUrls) && downloadUrls.length) {
+        const info = document.querySelector(".info");
+        info.style.display = "block";
+
+        zipFiles(downloadUrls)
+          .then(content => {
+            console.log("Zip");
+            saveAs(content, "books.zip");
+          })
+          .finally(() => info.style.display = "none");
+      }
     }
   });
 }

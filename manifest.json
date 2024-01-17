@@ -14,5 +14,5 @@
     "default_title": "humble_bundle_books_downloader",
     "show_matches": ["https://www.humblebundle.com/*"]
   },
-  "permissions": ["https://www.humblebundle.com/*", "https://dl.humble.com/*", "webRequest", "downloads"]
+  "permissions": ["https://www.humblebundle.com/*", "https://dl.humble.com/*", "webRequest", "downloads", "https://cdn.humble.com/*"]
 }
